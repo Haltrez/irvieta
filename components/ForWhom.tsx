@@ -32,7 +32,11 @@ export function ForWhom() {
     <section id="kam-tas-ir" className="section-padding">
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="heading-section text-ink">Kam tas ir?</h2>
+          <span className="eyebrow">Kam tas ir</span>
+          <h2 className="heading-section mt-5 text-ink">Abām ceļa pusēm</h2>
+          <p className="body-text mt-4">
+            Vienam kaut kas jāaizved. Otrs jau brauc. irvieta ir pa vidu.
+          </p>
         </Reveal>
 
         <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2 md:gap-8">

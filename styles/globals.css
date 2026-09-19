@@ -34,6 +34,12 @@
   ::selection {
     @apply bg-primary-light text-primary-dark;
   }
+
+  /* Focus ring needs a light ring and a dark offset on dark bands, or it
+     vanishes. Any dark surface opts in with data-dark. */
+  [data-dark] :focus-visible {
+    @apply ring-primary-light ring-offset-forest-950;
+  }
 }
 
 @layer components {
@@ -46,11 +52,32 @@
   }
 
   .heading-section {
-    @apply text-2xl font-semibold tracking-tight md:text-[2rem] lg:text-[2.5rem];
+    @apply text-[1.75rem] font-bold tracking-tight md:text-[2.25rem] lg:text-[2.75rem];
   }
 
   .body-text {
     @apply text-base leading-relaxed text-ink-soft md:text-lg;
+  }
+
+  /* Small uppercase label above a section heading — gives each section a
+     handle and stops the page reading as one undifferentiated column. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary-dark;
+  }
+
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 rounded-full bg-primary-light/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-accent;
+  }
+
+  /* Dark bands. Neumorphism is dropped here by design: the raised look needs
+     a white light source, which a dark surface cannot provide. Depth comes
+     from hairline borders and a soft mint glow instead. */
+  .dark-section {
+    @apply bg-forest-900 text-on-dark;
+  }
+
+  .dark-card {
+    @apply rounded-card border border-white/10 bg-white/[0.04] backdrop-blur-sm;
   }
 
   /*

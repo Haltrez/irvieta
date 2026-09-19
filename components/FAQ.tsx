@@ -39,7 +39,8 @@ export function FAQ() {
     <section id="faq" className="section-padding">
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="heading-section text-ink">Bieži uzdotie jautājumi</h2>
+          <span className="eyebrow">FAQ</span>
+          <h2 className="heading-section mt-5 text-ink">Bieži uzdotie jautājumi</h2>
         </Reveal>
 
         <div className="mx-auto mt-12 max-w-3xl space-y-4 md:mt-16">

@@ -23,12 +23,12 @@ export function Footer({ basePath = "" }: { basePath?: string }) {
   const LINKS = sectionLinks(basePath);
 
   return (
-    <footer className="border-t border-black/5 px-5 py-12 md:px-8 md:py-16">
+    <footer data-dark className="bg-forest-950 px-5 py-14 text-on-dark md:px-8 md:py-16">
       <div className="container-page">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-xl font-bold tracking-tight text-primary">irvieta</p>
-            <p className="mt-2 text-sm text-ink-soft">Kāds jau brauc tavā virzienā.</p>
+            <p className="text-2xl font-bold tracking-tight text-primary-light">irvieta</p>
+            <p className="mt-2 text-sm text-on-dark-soft">Kāds jau brauc tavā virzienā.</p>
           </div>
 
           <nav aria-label="Kājenes navigācija">
@@ -37,7 +37,7 @@ export function Footer({ basePath = "" }: { basePath?: string }) {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="rounded text-sm text-ink-soft transition-colors hover:text-primary motion-reduce:transition-none"
+                    className="rounded text-sm text-on-dark-soft transition-colors hover:text-primary-light motion-reduce:transition-none"
                   >
                     {link.label}
                   </a>
@@ -54,7 +54,7 @@ export function Footer({ basePath = "" }: { basePath?: string }) {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-btn bg-bg text-ink-soft shadow-neu-sm transition-all hover:text-primary hover:shadow-neu active:shadow-neu-inset motion-reduce:transition-none"
+                  className="flex h-11 w-11 items-center justify-center rounded-btn border border-white/10 bg-white/5 text-on-dark-soft transition-all hover:border-primary-light/40 hover:bg-white/10 hover:text-primary-light motion-reduce:transition-none"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -63,19 +63,19 @@ export function Footer({ basePath = "" }: { basePath?: string }) {
           </ul>
         </div>
 
-        <div className="mt-12 border-t border-black/5 pt-6">
-          <p className="text-sm text-ink-soft">
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <p className="text-sm text-on-dark-soft">
             © 2026 irvieta · Made with 💚 in Latvia ·{" "}
             <a
               href="/privatuma-politika"
-              className="rounded transition-colors hover:text-primary motion-reduce:transition-none"
+              className="rounded underline-offset-4 transition-colors hover:text-primary-light hover:underline motion-reduce:transition-none"
             >
               Privātuma politika
             </a>{" "}
             ·{" "}
             <a
               href="/noteikumi"
-              className="rounded transition-colors hover:text-primary motion-reduce:transition-none"
+              className="rounded underline-offset-4 transition-colors hover:text-primary-light hover:underline motion-reduce:transition-none"
             >
               Noteikumi
             </a>

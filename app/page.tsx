@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ForWhom } from "@/components/ForWhom";
+import { Coverage } from "@/components/Coverage";
 import { Pricing } from "@/components/Pricing";
 import { WhyIrvieta } from "@/components/WhyIrvieta";
 import { FAQ } from "@/components/FAQ";
@@ -16,6 +17,7 @@ export default function HomePage() {
         <Hero />
         <HowItWorks />
         <ForWhom />
+        <Coverage />
         <Pricing />
         <WhyIrvieta />
         <FAQ />
