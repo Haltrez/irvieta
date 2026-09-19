@@ -52,6 +52,39 @@
   .body-text {
     @apply text-base leading-relaxed text-ink-soft md:text-lg;
   }
+
+  /*
+   * Long-form styling for the legal pages. Written as descendant rules rather
+   * than classes on every element so the policy text stays readable as prose
+   * in the source — it gets edited by people, not by components.
+   */
+  .legal-prose h2 {
+    @apply mt-12 text-xl font-semibold tracking-tight text-ink md:text-2xl;
+  }
+
+  .legal-prose h3 {
+    @apply mt-8 text-base font-semibold text-ink md:text-lg;
+  }
+
+  .legal-prose p {
+    @apply mt-4 text-base leading-relaxed text-ink-soft;
+  }
+
+  .legal-prose ul {
+    @apply mt-4 space-y-2.5 pl-5;
+  }
+
+  .legal-prose li {
+    @apply list-disc text-base leading-relaxed text-ink-soft marker:text-primary;
+  }
+
+  .legal-prose a {
+    @apply rounded text-primary underline underline-offset-4 transition-colors hover:text-primary-dark motion-reduce:transition-none;
+  }
+
+  .legal-prose strong {
+    @apply font-semibold text-ink;
+  }
 }
 
 /*

@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+/**
+ * `basePath` lets the navbar work on sub-pages: on the landing page the links
+ * are plain hashes, on /privatuma-politika they need to point back to "/".
+ */
+export function Navbar({ basePath = "" }: { basePath?: string }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,14 +30,14 @@ export function Navbar() {
     >
       <div className="container-page flex h-full items-center justify-between px-5 md:px-8">
         <a
-          href="#top"
+          href={basePath || "#top"}
           className="rounded-btn text-xl font-bold tracking-tight text-primary md:text-2xl"
         >
           irvieta
         </a>
 
         <a
-          href="#pieraksts"
+          href={`${basePath}#pieraksts`}
           className={cn(
             "inline-flex h-11 items-center justify-center rounded-btn px-5",
             "bg-primary text-sm font-semibold text-white shadow-neu-sm",

@@ -45,14 +45,41 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const websiteSchema = {
+const SOCIAL_PROFILES = [
+  "https://www.instagram.com/irvietalv",
+  "https://www.facebook.com/irvietalv",
+  "https://www.tiktok.com/@irvietalv",
+];
+
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "irvieta",
-  alternateName: "irvieta.lv",
-  url: siteUrl,
-  description,
-  inLanguage: "lv-LV",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: "irvieta",
+      alternateName: "irvieta.lv",
+      url: siteUrl,
+      description,
+      inLanguage: "lv-LV",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "irvieta",
+      url: siteUrl,
+      email: "hello@irvieta.lv",
+      areaServed: "LV",
+      sameAs: SOCIAL_PROFILES,
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "hello@irvieta.lv",
+        contactType: "customer support",
+        availableLanguage: ["lv", "en"],
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -72,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // Static, author-controlled object — no user input reaches this.
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
       </body>

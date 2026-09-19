@@ -83,9 +83,12 @@ app/
   icon.svg              favicon
   opengraph-image.tsx   generated OG card (placeholder)
   actions/waitlist.ts   server action: validate → rate limit → insert
+app/privatuma-politika/   GDPR privacy policy
+app/noteikumi/            terms of use
 components/
   Navbar · Hero · HowItWorks · ForWhom · Pricing
   WhyIrvieta · FAQ · SecondCTA · Footer
+  LegalPage.tsx         chrome for the legal pages
   SignupCard.tsx        shared by Hero and SecondCTA
   Reveal.tsx            scroll-into-view fade
   icons.tsx             inline SVGs
@@ -119,13 +122,41 @@ both in CSS and through Framer Motion's `useReducedMotion`. `#2D6A4F` against
 white is ~6.5:1 (AA); `#6B7280` on `#F5F5F0` is ~4.7:1 and is not used below
 14px.
 
+## Legal pages
+
+Two statically prerendered pages live under `app/`, linked from the footer and
+from the signup form:
+
+| Page | Route |
+| --- | --- |
+| Privātuma politika | `/privatuma-politika` |
+| Lietošanas noteikumi | `/noteikumi` |
+
+Both share `components/LegalPage.tsx` for chrome and the `.legal-prose` styles
+in `globals.css`. Contact address and socials come from `CONTACT_EMAIL` and the
+`SOCIALS` list in `components/Footer.tsx` — change them in one place.
+
+The privacy policy is written against **what the code actually does**, not from
+a template: it lists exactly the five fields `app/actions/waitlist.ts` writes
+(email, role, source, country, timestamp), states that the IP used for rate
+limiting is never stored, and says plainly that the site sets **no cookies and
+runs no analytics** — which is true today. If you later add analytics, a
+tracking pixel, or anything that sets a cookie, sections 2, 4 and 5 must be
+updated and you will need a cookie consent banner.
+
+> ⚠️ **Fill in before launch:** the data controller in
+> `app/privatuma-politika/page.tsx` (`CONTROLLER`) is a placeholder. GDPR Art. 13
+> requires naming the controller — add the company name, registration number and
+> legal address once the entity is registered. The `UPDATED_AT` constant on each
+> page is the "in force from" date; bump it when you change the text.
+> These drafts are a solid, accurate starting point, but they have not been
+> reviewed by a lawyer.
+
 ## Known placeholders
 
-- Social links (Instagram, Facebook, TikTok) and the Privātuma politika /
-  Noteikumi links point at `#` — no accounts or legal pages exist yet.
-- Kontakti links to `mailto:info@irvieta.lv`; change if that inbox differs.
 - `app/opengraph-image.tsx` is a generated placeholder. To replace it, drop an
   `opengraph-image.png` (1200×630) into `app/` and delete the `.tsx`.
+- The data controller details in the privacy policy (see the warning above).
 - Signup rate limiting is in-memory per serverless instance — a speed bump, not
   a real defence. Move it to Upstash or a Postgres counter if spam appears.
 - Pricing CTAs both scroll to the waitlist form; there is nothing to subscribe

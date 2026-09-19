@@ -168,6 +168,17 @@ export function SignupCard({ variant = "hero", className }: SignupCardProps) {
                     Mēs nesūtām spamu. Tikai vienreiz — kad būsim gatavi.
                   </p>
                 ) : null}
+                {/* VDAR prasa informēt par apstrādi tieši datu ievākšanas brīdī. */}
+                <p className="text-sm text-ink-soft">
+                  Piesakoties piekrīti{" "}
+                  <a
+                    href="/privatuma-politika"
+                    className="rounded text-primary underline underline-offset-4 transition-colors hover:text-primary-dark motion-reduce:transition-none"
+                  >
+                    privātuma politikai
+                  </a>
+                  .
+                </p>
               </div>
             </form>
           </motion.div>
