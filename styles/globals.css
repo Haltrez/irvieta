@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2d6a4f;
+    --color-primary-dark: #1b4332;
+    --color-primary-light: #95d5b2;
+    --color-bg: #f5f5f0;
+    --color-surface: #ffffff;
+    --color-ink: #1a1a1a;
+    --color-ink-soft: #6b7280;
+    --color-accent: #d8e4ce;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sticky 72px navbar must not cover anchored section headings. */
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    @apply bg-bg text-ink antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* One visible focus ring everywhere, keyboard-only. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
+  }
+
+  ::selection {
+    @apply bg-primary-light text-primary-dark;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-5 py-16 md:px-8 md:py-24 lg:py-32;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .heading-section {
+    @apply text-2xl font-semibold tracking-tight md:text-[2rem] lg:text-[2.5rem];
+  }
+
+  .body-text {
+    @apply text-base leading-relaxed text-ink-soft md:text-lg;
+  }
+}
+
+/*
+ * Honour the OS "reduce motion" setting globally. Framer Motion respects it via
+ * useReducedMotion in components, but this catches CSS transitions/animations
+ * (hover lifts, the pulse dot, smooth scroll) too.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
